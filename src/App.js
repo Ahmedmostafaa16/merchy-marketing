@@ -16,7 +16,6 @@ import {
 import logo from './assets/logo.png';
 import screen from './assets/screen.png';
 import screen1 from './assets/screen1.png';
-import screen2 from './assets/screen2.png';
 
 const featureItems = [
   {

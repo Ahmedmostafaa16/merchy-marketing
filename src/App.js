@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   AlertTriangle,
   BarChart3,
@@ -177,6 +177,8 @@ const faqItems = [
 
 function App() {
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -199,10 +201,23 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const handleOutsideClick = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => document.removeEventListener('mousedown', handleOutsideClick);
+  }, [isMenuOpen]);
+
   return (
     <div className="bg-base text-white">
       <header className="sticky top-0 z-40 border-b border-border/70 bg-base/75 backdrop-blur-xl">
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+        <nav className="relative mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10" ref={menuRef}>
           <a href="#top" className="flex items-center gap-3">
             <img src={logo} alt="Merchy" className="h-8 w-auto origin-left scale-[4]" />
           </a>
@@ -212,9 +227,44 @@ function App() {
             <a href="#pricing" className="transition hover:text-white">Pricing</a>
             <a href="#contact" className="transition hover:text-white">Contact</a>
           </div>
-          <button className="btn-glow rounded-full border border-accent/50 bg-accent px-5 py-2 text-sm font-semibold text-white shadow-glow">
-            Install App
+          <div className="hidden md:block">
+            <button className="btn-glow rounded-full border border-accent/50 bg-accent px-5 py-2 text-sm font-semibold text-white shadow-glow">
+              Install App
+            </button>
+          </div>
+          <button
+            type="button"
+            aria-label="Toggle navigation"
+            aria-expanded={isMenuOpen}
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            className="md:hidden rounded-lg border border-border bg-card px-3 py-2 text-sm font-semibold text-white transition hover:border-accent/40"
+          >
+            ☰
           </button>
+          {isMenuOpen ? (
+            <div className="absolute right-4 top-16 z-50 w-56 rounded-xl border border-white/10 bg-black/90 p-4 text-sm text-white shadow-lg backdrop-blur md:hidden">
+              <div className="flex flex-col gap-4">
+                <a href="#features" className="transition hover:text-purple-300" onClick={() => setIsMenuOpen(false)}>
+                  Features
+                </a>
+                <a href="#how-it-works" className="transition hover:text-purple-300" onClick={() => setIsMenuOpen(false)}>
+                  How it Works
+                </a>
+                <a href="#pricing" className="transition hover:text-purple-300" onClick={() => setIsMenuOpen(false)}>
+                  Pricing
+                </a>
+                <a href="#contact" className="transition hover:text-purple-300" onClick={() => setIsMenuOpen(false)}>
+                  Contact
+                </a>
+                <button
+                  className="btn-glow rounded-full border border-accent/50 bg-accent px-4 py-2 text-sm font-semibold text-white shadow-glow"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Install App
+                </button>
+              </div>
+            </div>
+          ) : null}
         </nav>
       </header>
 

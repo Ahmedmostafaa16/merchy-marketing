@@ -13,6 +13,7 @@ import {
   TrendingUp,
   Zap,
 } from 'lucide-react';
+import { Analytics } from '@vercel/analytics/react';
 import logo from './assets/logo.png';
 import screen from './assets/screen.png';
 import screen1 from './assets/screen1.png';
@@ -725,6 +726,7 @@ function App() {
           ))}
         </div>
       </footer>
+      <Analytics mode="production" debug />
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link, Route, Routes } from 'react-router-dom';
 import {
   AlertTriangle,
   BarChart3,
@@ -17,6 +18,8 @@ import { Analytics } from '@vercel/analytics/react';
 import logo from './assets/logo.png';
 import screen from './assets/screen.png';
 import screen1 from './assets/screen1.png';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
 
 const featureItems = [
   {
@@ -176,6 +179,12 @@ const faqItems = [
   },
 ];
 
+const footerColumns = [
+  { title: 'Product', links: ['Features', 'Pricing'] },
+  { title: 'Company', links: ['About', 'Contact'] },
+  { title: 'Legal', links: ['Privacy Policy', 'Terms of Service'] },
+];
+
 function App() {
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -269,7 +278,11 @@ function App() {
         </nav>
       </header>
 
-      <main id="top" className="bg-grid overflow-hidden">
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <main id="top" className="bg-grid overflow-hidden">
         <section className="relative mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 pb-20 pt-20 lg:grid-cols-2 lg:items-center lg:px-10 lg:pt-24">
           <div className="hero-glow left-[-8rem] top-[-6rem]" />
           <div className="reveal">
@@ -698,27 +711,39 @@ function App() {
             </div>
           </div>
         </section>
-      </main>
-
+            </main>
+          }
+        />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
+      </Routes>
       <footer className="border-t border-border bg-base">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-12 md:grid-cols-2 lg:grid-cols-4 lg:px-10">
           <div className="lg:col-span-1">
             <img src={logo} alt="Merchy" className="h-8 w-auto origin-left scale-[4]" />
             <p className="mt-4 text-sm text-muted">AI inventory forecasting for Shopify brands.</p>
           </div>
-          {[
-            { title: 'Product', links: ['Features', 'Pricing'] },
-            { title: 'Company', links: ['About', 'Contact'] },
-            { title: 'Legal', links: ['Privacy', 'Terms'] },
-          ].map((column) => (
+          {footerColumns.map((column) => (
             <div key={column.title}>
               <p className="text-sm font-medium text-white">{column.title}</p>
               <ul className="mt-4 space-y-2 text-sm text-muted">
                 {column.links.map((link) => (
                   <li key={link}>
-                    <a href="#top" className="transition hover:text-white">
-                      {link}
-                    </a>
+                    {column.title === 'Legal' ? (
+                      <Link
+                        to={link === 'Privacy Policy' ? '/privacy' : '/terms'}
+                        className="transition hover:text-white"
+                      >
+                        {link}
+                      </Link>
+                    ) : (
+                      <a
+                        href={link === 'Pricing' ? '#pricing' : link === 'Contact' ? '#contact' : '#features'}
+                        className="transition hover:text-white"
+                      >
+                        {link}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>

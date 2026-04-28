@@ -241,9 +241,12 @@ function App() {
             <a href="#contact" className="transition hover:text-white">Contact</a>
           </div>
           <div className="hidden md:block">
-            <button className="btn-glow rounded-full border border-accent/50 bg-accent px-5 py-2 text-sm font-semibold text-white shadow-glow">
+            <a
+              href={SHOPIFY_APP_URL}
+              className="btn-glow inline-flex items-center justify-center rounded-full border border-accent/50 bg-accent px-5 py-2 text-sm font-semibold text-white shadow-glow"
+            >
               Install App
-            </button>
+            </a>
           </div>
           <button
             type="button"
@@ -269,12 +272,13 @@ function App() {
                 <a href="#contact" className="transition hover:text-purple-300" onClick={() => setIsMenuOpen(false)}>
                   Contact
                 </a>
-                <button
+                <a
+                  href={SHOPIFY_APP_URL}
                   className="btn-glow rounded-full border border-accent/50 bg-accent px-4 py-2 text-sm font-semibold text-white shadow-glow"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Install App
-                </button>
+                </a>
               </div>
             </div>
           ) : null}

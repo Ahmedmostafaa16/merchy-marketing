@@ -21,6 +21,9 @@ import screen1 from './assets/screen1.png';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 
+const SHOPIFY_APP_URL =
+  'https://apps.shopify.com/merchyy?search_id=45cf00d4-4c0a-47bc-b62f-071dab63f95b&surface_detail=merchy&surface_inter_position=1&surface_intra_position=1&surface_type=search';
+
 const featureItems = [
   {
     title: 'Inventory Coverage Insights',
@@ -295,9 +298,12 @@ function App() {
               Merchy analyzes your Shopify sales and predicts exactly what you should restock before you run out.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <button className="btn-glow rounded-full border border-accent/50 bg-accent px-7 py-3 text-sm font-semibold shadow-glow">
+              <a
+                href={SHOPIFY_APP_URL}
+                className="btn-glow inline-flex items-center justify-center rounded-full border border-accent/50 bg-accent px-7 py-3 text-sm font-semibold shadow-glow"
+              >
                 Install on Shopify
-              </button>
+              </a>
               <button className="rounded-full border border-border bg-card px-7 py-3 text-sm font-semibold text-white transition hover:border-accent/40 hover:text-white">
                 See how it works
               </button>
@@ -375,9 +381,12 @@ function App() {
               ))}
             </div>
             <div className="reveal mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <button className="btn-glow rounded-full border border-accent/50 bg-accent px-7 py-3 text-sm font-semibold shadow-glow">
+              <a
+                href={SHOPIFY_APP_URL}
+                className="btn-glow inline-flex items-center justify-center rounded-full border border-accent/50 bg-accent px-7 py-3 text-sm font-semibold shadow-glow"
+              >
                 Install on Shopify
-              </button>
+              </a>
               <button className="rounded-full border border-border bg-card px-7 py-3 text-sm font-semibold text-white transition hover:border-accent/40 hover:text-white">
                 See how it works
               </button>
@@ -512,9 +521,12 @@ function App() {
           </p>
 
           <div className="reveal mt-8 flex justify-center">
-            <button className="btn-glow rounded-full border border-accent/50 bg-gradient-to-r from-accent to-glow px-8 py-3 text-sm font-semibold text-white shadow-glow">
+            <a
+              href={SHOPIFY_APP_URL}
+              className="btn-glow inline-flex items-center justify-center rounded-full border border-accent/50 bg-gradient-to-r from-accent to-glow px-8 py-3 text-sm font-semibold text-white shadow-glow"
+            >
               Install Merchy on Shopify
-            </button>
+            </a>
           </div>
         </section>
 
@@ -617,9 +629,12 @@ function App() {
                 </p>
                 <h3 className="mt-4 text-2xl font-semibold text-white">Merchy Starter Access</h3>
                 <p className="mt-3 text-base text-muted">One-time access. No subscription.</p>
-                <button className="btn-glow mt-8 w-full rounded-full border border-accent/50 bg-gradient-to-r from-accent to-glow px-6 py-3 text-base font-semibold text-white shadow-glow">
+                <a
+                  href={SHOPIFY_APP_URL}
+                  className="btn-glow mt-8 flex w-full items-center justify-center rounded-full border border-accent/50 bg-gradient-to-r from-accent to-glow px-6 py-3 text-base font-semibold text-white shadow-glow"
+                >
                   Start Forecasting →
-                </button>
+                </a>
                 <p className="mt-4 text-sm text-muted">Instant access • No hidden fees</p>
               </article>
             </div>
@@ -682,9 +697,12 @@ function App() {
 
           <div className="reveal mt-12 text-center">
             <h3 className="text-2xl font-semibold tracking-tight sm:text-3xl">Start forecasting inventory today</h3>
-            <button className="btn-glow mt-6 rounded-full border border-accent/50 bg-gradient-to-r from-accent to-glow px-8 py-3 text-sm font-semibold text-white shadow-glow">
+            <a
+              href={SHOPIFY_APP_URL}
+              className="btn-glow mt-6 inline-flex items-center justify-center rounded-full border border-accent/50 bg-gradient-to-r from-accent to-glow px-8 py-3 text-sm font-semibold text-white shadow-glow"
+            >
               Install Merchy on Shopify
-            </button>
+            </a>
           </div>
         </section>
 
@@ -694,9 +712,12 @@ function App() {
             <h2 className="mx-auto max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
               Never run out of your best-selling products again.
             </h2>
-            <button className="btn-glow mt-8 rounded-full border border-accent/50 bg-accent px-8 py-3 text-sm font-semibold shadow-glow">
+            <a
+              href={SHOPIFY_APP_URL}
+              className="btn-glow mt-8 inline-flex items-center justify-center rounded-full border border-accent/50 bg-accent px-8 py-3 text-sm font-semibold shadow-glow"
+            >
               Install Merchy on Shopify
-            </button>
+            </a>
             <div className="mt-8 text-center">
               <p className="mb-2 text-sm text-gray-400">Support Email</p>
               <div className="flex items-center justify-center gap-2">
